@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>El Expediente de la Magia</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;600&display=swap">
+<style>
+:root{--bg:#080B16;--mid:#101A35;--deep:#172D52;--g:#C8A96B;--gl:#F4D58D;--v:#8273C7;--w:#F3EBDD;--p:#B8B2A5;--h:#101A35;box-sizing:border-box;color-scheme:dark;padding:env(safe-area-inset-top,0px) env(safe-area-inset-right,0px) env(safe-area-inset-bottom,0px) env(safe-area-inset-left,0px)}
+*,*::before,*::after{box-sizing:inherit;min-width:0}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 50% 0,var(--deep),var(--h) 45%,var(--bg));color:var(--w);font:clamp(17px,4.4vw,20px)/1.6 'Cormorant Garamond',Georgia,serif;overflow-wrap:anywhere;overflow-x:hidden;transition:background 1.5s}
+body[data-th="0"]{--h:#161226}body[data-th="1"]{--h:#1a1a2c}body[data-th="2"]{--h:#0b1d2a}body[data-th="3"]{--h:#201a14}
+body.dim::after{content:"";position:fixed;inset:0;background:#000a;z-index:5;pointer-events:none}
+#cv{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:0}
+h1,h2,.ci{font-family:Cinzel,Georgia,serif;font-weight:700;color:var(--gl);margin:0;letter-spacing:.06em}
+h1{font-size:clamp(22px,7vw,40px)}h2{font-size:clamp(13px,3.6vw,16px);color:var(--g);letter-spacing:.2em}
+button,input,select,textarea,.ui{font-family:Inter,system-ui,sans-serif;font-size:15px}
+.b{min-height:48px;padding:10px 22px;background:transparent;color:var(--gl);border:1px solid var(--g);border-radius:4px;letter-spacing:.12em;cursor:pointer;font-weight:600}
+.b:hover,.b:focus-visible{background:#c8a96b26}.b.s{border-color:#c8a96b66;color:var(--p);font-weight:400;min-height:44px}
+:focus-visible{outline:2px solid var(--gl);outline-offset:2px}
+input,textarea,select{width:100%;max-width:340px;min-height:48px;padding:10px 14px;background:#080b16cc;color:var(--w);border:1px solid var(--g);border-radius:4px;text-align:center;font-size:18px}
+#bar{position:fixed;top:0;left:0;right:0;z-index:9;padding:calc(6px + env(safe-area-inset-top,0px)) 8px 6px;background:#080b16e6;display:flex;flex-wrap:wrap;gap:4px;justify-content:center;align-items:center}
+#bar button{min-width:40px;min-height:40px;border:1px solid #c8a96b55;background:none;color:var(--p);border-radius:4px;cursor:pointer}
+.dt{color:#506;opacity:1;color:#3a4766!important}.dt.cur{color:var(--g)!important}.dt.ok{color:var(--gl)!important;border-color:var(--gl)!important}
+.sc{display:none;position:relative;z-index:1;min-height:100vh;padding:calc(104px + env(safe-area-inset-top,0px)) 18px 48px;max-width:640px;margin:0 auto;flex-direction:column;align-items:center;text-align:center;gap:16px}
+.sc.on{display:flex;animation:fi 1.2s both}
+@keyframes fi{from{opacity:0}to{opacity:1}}@keyframes up{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.ln{margin:0;animation:up 1s both}
+.big{font:700 clamp(30px,10vw,54px) Cinzel,serif;color:var(--gl);letter-spacing:.2em;text-shadow:0 0 18px #f4d58d88}
+.gl{display:inline-block;font:700 clamp(40px,14vw,72px) Cinzel,serif;color:var(--gl);text-shadow:0 0 20px #f4d58d99;margin:0 4px;animation:pop .9s both}
+@keyframes pop{from{opacity:0;transform:scale(.4);filter:blur(6px)}to{opacity:1;transform:none;filter:none}}
+.seal{width:84px;height:84px;border-radius:50%;border:3px double var(--g);display:grid;place-items:center;color:var(--gl);font-size:30px;background:radial-gradient(#7a1f2b,#4a0f19);animation:st 1.4s both}
+@keyframes st{from{transform:scale(2.2);opacity:0}to{transform:none;opacity:1}}
+.book{width:120px;height:84px;background:linear-gradient(90deg,#3a2a1a,#5b4126);border:2px solid var(--g);border-radius:3px 8px 8px 3px;box-shadow:0 0 30px #8273c766;transform:perspective(500px) rotateY(0);transform-origin:left;animation:bk 3s 1s both}
+@keyframes bk{to{transform:perspective(500px) rotateY(-28deg);box-shadow:0 0 50px #f4d58d88}}
+.cd,.sl{display:block;width:100%;padding:14px;border:1px solid var(--g);border-radius:4px;background:#c8a96b12;color:var(--w);font:600 clamp(16px,5vw,22px) Cinzel,serif}
+button.cd{cursor:pointer;color:var(--gl)}button.cd:disabled{opacity:.25}
+.sl{min-height:54px;border-style:dashed;color:#6b7799}.sl.f{border-style:solid;color:var(--gl)}
+.mono{font:700 clamp(20px,7vw,34px) Inter,sans-serif;letter-spacing:.12em;color:var(--gl)}
+.wd{font:700 clamp(26px,9vw,44px) Cinzel,serif;color:var(--gl);animation:pop 1s both}
+.fr{color:var(--g);letter-spacing:.2em;font:600 13px Inter,sans-serif}
+.msg{min-height:1.5em;color:var(--p);font-style:italic}
+.orb{width:120px;height:120px;border-radius:50%;background:radial-gradient(circle,#fff 0,#8273c7 30%,#2a4a9a 60%,transparent 72%);box-shadow:0 0 60px #8273c7;animation:pl 4s infinite alternate}
+@keyframes pl{to{transform:scale(1.12);box-shadow:0 0 90px #4a6ad0}}
+#vb{width:100%;aspect-ratio:16/9;background:radial-gradient(circle,#172d52,#080b16);border:1px solid var(--g);display:grid;place-items:center;overflow:hidden}
+#vb video,#vb iframe{width:100%;height:100%;border:0;background:#000}
+.env{width:min(100%,320px);aspect-ratio:3/2;background:linear-gradient(#d8c39a,#bda57a);border:2px solid var(--g);border-radius:4px;position:relative;display:grid;place-items:center;box-shadow:0 10px 40px #000a;cursor:pointer;transition:transform 1s}
+.env::before{content:"";position:absolute;inset:0;background:linear-gradient(to bottom right,transparent 49%,#0003 50%),linear-gradient(to bottom left,transparent 49%,#0003 50%);clip-path:polygon(0 0,100% 0,50% 60%)}
+.env.o{transform:translateY(8px) scale(.9);opacity:.6}
+.paper{width:100%;background:#efe3c8;color:#2b2113;border:1px solid var(--g);border-radius:3px;padding:clamp(18px,6vw,36px);text-align:left;box-shadow:0 0 40px #f4d58d44,inset 0 0 40px #8a6d3b44;font-size:clamp(18px,4.8vw,22px)}
+.paper p{margin:0 0 1.1em;animation:up 1.2s both}
+.heart{font-size:56px;color:var(--gl);text-shadow:0 0 30px #f4d58d;animation:hb 1.6s infinite}
+@keyframes hb{50%{transform:scale(1.15)}}
+.note{font:13px/1.5 Inter,sans-serif;color:var(--p)}
+.adm{text-align:left;align-items:stretch;font-family:Inter,sans-serif;font-size:14px}.adm input,.adm select,.adm textarea{max-width:none;text-align:left;font-size:15px}
+.adm .row{display:flex;gap:8px;flex-wrap:wrap}.adm canvas{max-width:100%;background:#fff}
+@media (prefers-reduced-motion:reduce){*{animation-duration:.01s!important;animation-delay:0s!important;transition:none!important}}
+</style></head><body>
+<canvas id="cv" aria-hidden="true"></canvas>
+<div id="bar" class="ui" hidden>
+ <span id="dots"></span>
+ <button id="bRep" aria-label="Escuchar de nuevo la narración">↻</button><button id="bPau" aria-label="Pausar o reanudar la narración">⏯</button><button id="bStp" aria-label="Detener la narración">⏹</button><button id="bAmb" aria-label="Música ambiental">♪</button><button id="bFx" aria-label="Efectos de sonido">✦</button><button id="bRst" aria-label="Reiniciar el expediente">⟲</button>
+</div>
+
+<section class="sc on" id="intro">
+ <div class="ci" style="font-size:34px;color:var(--gl);animation:fi 3s both" aria-hidden="true">✦</div>
+ <h2 style="animation:fi 3s 1.5s both">EXPEDIENTE N.º 001<br>ARCHIVO CONFIDENCIAL</h2>
+ <div class="seal" style="animation-delay:3.5s" aria-hidden="true">✦</div>
+ <div class="book" style="animation-delay:5s" aria-hidden="true"></div>
+ <div id="inTxt" style="min-height:200px"></div>
+ <button class="b" id="inGo" hidden>ABRIR EXPEDIENTE</button>
+</section>
+
+<section class="sc" id="instr">
+ <h2>INSTRUCCIONES</h2><div id="isTxt"></div>
+ <button class="b" id="isGo" hidden>COMENZAR LA INVESTIGACIÓN</button>
+</section>
+
+<section class="sc" id="pz">
+ <h2 id="pzT"></h2><h1 id="pzN"></h1>
+ <div id="pzTxt"></div><div class="mono" id="pzShow"></div><div class="note" id="pzNote"></div>
+ <div id="pzCards" style="width:100%;display:grid;gap:10px"></div>
+ <div id="pzAns" style="width:100%;display:grid;gap:10px;justify-items:center">
+  <label for="pzIn" id="pzQ" style="font-style:italic"></label>
+  <input id="pzIn" autocomplete="off" autocapitalize="characters" spellcheck="false" enterkeyhint="done">
+  <button class="b" id="pzGo">CONFIRMAR</button>
+  <button class="b s" id="pzHint">NECESITO UNA PISTA</button>
+  <div class="note" id="pzHintT"></div>
+ </div>
+ <div class="msg" id="pzMsg" role="status" aria-live="polite"></div>
+ <div id="pzRes" style="width:100%"></div>
+ <button class="b" id="pzNext" hidden>CONTINUAR</button>
+</section>
+
+<section class="sc" id="build">
+ <h2>RECONSTRUCCIÓN</h2><h1>ORDENA LOS FRAGMENTOS</h1>
+ <div id="bSl" style="width:100%;display:grid;gap:8px"></div>
+ <div id="bCd" style="width:100%;display:grid;gap:8px"></div>
+ <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center"><button class="b s" id="bUn">DESHACER</button><button class="b" id="bOk">CONFIRMAR</button></div>
+ <div class="msg" id="bMsg" role="status" aria-live="polite"></div>
+</section>
+
+<section class="sc" id="reveal">
+ <div id="rvTxt"></div><h1 class="big" id="rvT" style="font-size:clamp(26px,9vw,48px);letter-spacing:.1em"></h1>
+ <div id="rvTxt2"></div><button class="b" id="rvGo" hidden>DESBLOQUEAR ARCHIVO FINAL</button>
+</section>
+
+<section class="sc" id="final">
+ <h1>UNA ÚLTIMA HISTORIA POR DESCUBRIR</h1><div class="orb" aria-hidden="true"></div>
+ <div id="fnTxt"></div>
+ <div id="vb"><button class="b" id="vbGo">REPRODUCIR EL ÚLTIMO ARCHIVO</button></div>
+ <div class="note" id="vbNote" role="status"></div>
+ <button class="b s" id="vbNext" hidden>CONTINUAR</button>
+</section>
+
+<section class="sc" id="letter">
+ <div id="ltIntro" class="big" style="font-size:clamp(22px,7vw,34px);letter-spacing:.04em;font-family:'Cormorant Garamond',serif;font-style:italic"></div>
+ <div id="ltEnv" hidden style="width:100%;display:grid;justify-items:center;gap:12px">
+  <h2>UNA ÚLTIMA NOTA PARA TI.</h2>
+  <div class="env" id="env" role="button" tabindex="0" aria-label="Abrir el sobre"><span class="seal" style="animation:none;width:60px;height:60px;font-size:24px;z-index:1">❤</span></div>
+ </div>
+ <div class="paper" id="paper" hidden></div>
+ <button class="b s" id="ltAll" hidden>LEER SIN SONIDO</button>
+ <div id="ltEnd" hidden style="display:grid;gap:10px;justify-items:center"><div class="heart" aria-hidden="true">❤</div><div id="ltSig" class="ci" style="font-size:clamp(15px,4.5vw,20px)"></div><div id="ltFin"></div></div>
+</section>
+
+<section class="sc adm" id="admin">
+ <h1>PANEL DE ADMINISTRACIÓN</h1>
+ <p class="note">Primero publica la página; después pega aquí su URL pública definitiva. Este parámetro no es una protección de seguridad. A Alex solo se le entrega el QR de la experiencia.</p>
+ <label>URL pública<input id="aU" placeholder="https://tu-sitio.netlify.app/"></label>
+ <div class="row"><label>Tamaño<select id="aS"><option>1024</option><option>2048</option></select></label><label>Margen (px)<input id="aM" type="number" value="80" min="40" max="300"></label></div>
+ <div class="row"><button class="b" id="aGen">GENERAR QR</button><button class="b s" id="aCp">COPIAR ENLACE</button><button class="b s" id="aDl">DESCARGAR PNG</button></div>
+ <div class="note" id="aMsg" role="status"></div><div id="aOut"></div><div id="aTmp" style="position:absolute;left:-9999px"></div>
+ <h2>MULTIMEDIA Y DEDICATORIA</h2>
+ <label>Audio ambiental (AMBIENT_AUDIO_URL)<input id="aA"></label><label>Música final (FINAL_MUSIC_URL)<input id="aF"></label><label>Video final (FINAL_VIDEO_URL)<input id="aV"></label><label>Mensaje final<input id="aT" value="Pero no de nuestra historia."></label>
+ <button class="b s" id="aCfg">GENERAR FRAGMENTO PARA CONFIG</button><textarea id="aCo" rows="6" readonly></textarea>
+ <p class="note">Estos campos no cambian lo que ve Alex: pega el fragmento dentro del objeto CONFIG al inicio del script y vuelve a publicar la página (la carta no se toca desde aquí).</p>
+ <div id="aPend" class="note"></div>
+ <div class="row"><button class="b s" id="aT1">PROBAR DESDE EL INICIO</button><button class="b s" id="aT2">PROBAR ÚLTIMA ESCENA</button></div>
+ <details class="note"><summary>Guía rápida (README)</summary><p>Publicar: arrastra este index.html a Netlify Drop o súbelo a GitHub Pages. Actualizar sin cambiar el QR: vuelve a subir el archivo conservando la misma dirección. Progreso: se guarda en localStorage (se pierde al cambiar de navegador o dispositivo, borrar datos o usar modo privado). Voz: depende del teléfono y de las voces instaladas. Descargar PNG funciona en tu propio alojamiento; en una vista previa, mantén pulsada la imagen del QR. SVG no está implementado. Video: YouTube puede requerir el botón manual de continuar; un archivo propio detecta el final solo. Sin conexión: las fuentes, el video y la música requieren internet; no hay service worker.</p></details>
+</section>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script>
+"use strict";
+/* ===== CONFIGURACIÓN CENTRAL ===== */
+const CONFIG={investigatorName:"Alex",letterAuthor:"Reyna",
+ ambientAudioUrl:["https://res.cloudinary.com/dybftfriz/video/upload/v1795060287/Hollow_Knight_OST_-_Reflection_qzvp50.mp3","https://res.cloudinary.com/dybftfriz/video/upload/v1795060294/Hollow_Knight_OST_-_Enter_Hallownest_jtm9xt.mp3"],finalMusicUrl:"",finalVideoUrl:"https://res.cloudinary.com/dybftfriz/video/upload/v1795059982/OneRepublic_-_Secrets_Traducida_a_Espa%C3%B1ol_errtll.mp4",
+ narration:{enabled:true,language:"es",preferredLanguage:"es-419",rate:.9,volume:1},
+ audio:{initialAmbientVolume:.2,effectsEnabled:true},publicUrl:"",finalMessage:"Pero no de nuestra historia."};
+
+/* ===== CONTENIDO ===== */
+const ERR=["La señal no coincide. Inténtalo nuevamente.","El expediente todavía no reconoce esa respuesta.","Quizá debas observar con más atención."];
+const P=[
+{t:"PRUEBA I",n:"EL CÓDIGO OLVIDADO",lines:["Alguien quiso dejar un mensaje, pero decidió reemplazar las letras por números.","Para recuperarlo, tendrás que utilizar el alfabeto como referencia.","Cada número representa la posición que ocupa una letra."],show:"5 - 12",note:"Pista: A = 1 · B = 2 · C = 3 ... Z = 26",q:"Descifra la palabra",a:"el",w:"EL",ok:"Primer fragmento recuperado. Pero todavía no conocemos la historia completa."},
+{t:"PRUEBA II",n:"UNA CUESTIÓN DE APRENDIZAJE",lines:["Pensemos un momento en nuestro entorno.","La universidad, las clases, los trabajos, las exposiciones, los parciales... y esas ocasiones en las que creemos que dominamos un tema hasta que nos toca demostrarlo.","En este lugar todos comenzamos aprendiendo.","Algunos tienen más experiencia, otros necesitan más práctica y otros todavía están descubriendo de qué son capaces.","Pero existe una palabra para describir a quien aún no domina completamente una disciplina y se encuentra en el proceso de aprenderla.","No es el docente.","No es el examinador.","Tampoco es quien ya tiene el conocimiento completo.","Es quien escucha, observa, practica, se equivoca y vuelve a intentarlo.","¿Cómo se le llama a esa persona?"],hint:"Piensa en quien está empezando en una disciplina, no en quien la enseña.",q:"Tu respuesta",a:"aprendiz",w:"APRENDIZ",ok:"El segundo fragmento ha sido recuperado. Parece que el conocimiento todavía esconde algo más."},
+{t:"PRUEBA III",n:"UNA TRANSMISIÓN MISTERIOSA",lines:["El siguiente mensaje fue interceptado mediante un sistema de comunicación antiguo.","No contiene números ni letras convencionales.","Para interpretarlo tendrás que utilizar el código Morse.","Recuerda:","Punto: señal corta.","Raya: señal larga.","Cada grupo separado por una barra representa una letra."],show:"−··· / ·−· / ··− / ·−−− / −−−",hint:"Cada grupo de señales representa una letra. Intenta identificar primero las señales cortas y largas.",q:"Descifra el mensaje",a:"brujo",w:"BRUJO",ok:"La transmisión ha sido descifrada. Pero todavía falta una pieza para comprender el mensaje completo."},
+{t:"PRUEBA IV",n:"LA CONEXIÓN QUE FALTA",lines:["Tres expresiones han quedado incompletas.","Todas necesitan la misma palabra para tener sentido."],cards:["1. El libro ___ estudiante.","2. La historia ___ mago.","3. El camino ___ aprendiz."],hint:"Es una palabra corta que une dos palabras muy comunes.",q:"¿Qué palabra completa correctamente las tres expresiones?",a:"del",w:"DEL",ok:"Las cuatro pruebas han sido superadas. Ahora tienes todas las piezas, pero todavía debes descubrir cómo se relacionan."}];
+/* Carta íntegra de Reyna: no modificar */
+const LETTER=["Mi amorcito, aquí estamos... ❤️","¿Escuchaste la música? ¿Viste el video?","JSJSJS. Espero que sí, porque después de todo este pequeño misterio, creo que te merecías descubrir esa última parte.","Mi amor, quiero una historia contigo. Y creo que, de alguna manera, cada vez que haces algo por mí, por pequeño o grande que sea, siempre termino sintiéndolo así... como magia.","No sé cómo explicártelo exactamente, pero siento felicidad, emoción, tranquilidad y tantas cosas bonitas que a veces ni siquiera encuentro la manera correcta de expresarlas. Es una sensación que aparece con tus detalles, con tus ocurrencias, con tus abrazos, con tus palabras, con nuestras conversaciones y hasta con esos momentos en los que simplemente estamos juntos sin necesitar hacer absolutamente nada extraordinario.","Cada momento, cada situación, cada lugar en el que estamos juntos tiene algo especial para mí. Y creo que eso es lo que más me sorprende: nunca imaginé que podría sentirme así con alguien. Nunca pensé que compartir cosas tan sencillas pudiera hacerme tan feliz, que un momento cualquiera pudiera convertirse en uno de mis recuerdos favoritos solamente porque estabas tú.","Y es que no se trata únicamente de las cosas que haces por mí, sino de ti. De tu manera de ser, de cómo me haces reír, de tus ocurrencias, de tus abrazos, de tus formas tan tuyas de demostrarme cariño. De todo eso que te hace ser tú y que, sin darte cuenta, consigue hacer que mis días tengan algo diferente.","Por eso hoy quise darte algo que reflejara un poquito de cómo me siento. Algo que tuviera magia, misterio, una historia y un pequeño detalle que pudieras descubrir por ti mismo. Porque así siento muchas de las cosas que vivimos: como si incluso los momentos más simples tuvieran algo extraordinario.","Y quiero seguir descubriendo historias contigo, mi amor. Quiero seguir teniendo momentos que recordar, lugares a los que ir, cosas nuevas que aprender, aventuras que vivir y también días completamente normales en los que nuestra única aventura sea estar juntos.","Quiero seguir sorprendiéndome contigo, seguir encontrando motivos para sonreír y seguir sintiendo esa felicidad tan bonita que me da tu compañía.","No sé cuántas historias nos esperan, ni cuántas aventuras nos faltan por vivir, pero sí sé que quiero compartirlas contigo. Quiero seguir eligiéndote, cuidando lo que tenemos y disfrutando de todo eso bonito que estamos construyendo.","Te amo, mi amorcito. Y te seguiré amando, en cada pequeño momento, en cada nueva aventura y en todas esas historias que todavía nos quedan por escribir.","Feliz Día del Hombre, mi vida. ❤️","(Y que no se note que utilicé este día como excusa para prepararte todo esto y darte un regalito JSJSJSJS).","Con muchísimo amor,","Tu Reyna. ❤️"];
+
+/* ===== UTILIDADES Y ESTADO ===== */
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const sleep=ms=>new Promise(r=>setTimeout(r,ms));
+const RM=matchMedia("(prefers-reduced-motion:reduce)").matches;
+const KEY="expediente_magia_v1";
+let S={stage:"intro",solved:[],frags:[],title:false,final:false,done:false};
+try{Object.assign(S,JSON.parse(localStorage.getItem(KEY)||"{}"))}catch(e){}
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}};
+const addLn=(box,t)=>{const p=document.createElement("p");p.className="ln";p.textContent=t;box.appendChild(p);return p};
+
+/* ===== AUDIO ===== */
+let AC,amb=null,ambOn=false;
+const fx=(f,d=.3,ty="sine",v=.07,at=0)=>{if(!CONFIG.audio.effectsEnabled)return;try{AC=AC||new(window.AudioContext||window.webkitAudioContext)();const o=AC.createOscillator(),g=AC.createGain(),t=AC.currentTime+at;o.type=ty;o.frequency.value=f;g.gain.setValueAtTime(v,t);g.gain.exponentialRampToValueAtTime(.001,t+d);o.connect(g);g.connect(AC.destination);o.start(t);o.stop(t+d)}catch(e){}};
+const SND={ok:()=>{fx(523,.3);fx(784,.5,"sine",.06,.15)},bad:()=>fx(150,.35,"triangle"),tap:()=>fx(660,.08),rev:()=>[392,523,659,784,988].forEach((f,i)=>fx(f,1,"sine",.05,i*.2)),open:()=>{fx(330,.6,"triangle",.05);fx(494,.8,"sine",.05,.2)}};
+let ai=0,fails=0;
+function setAmb(on){const L=CONFIG.ambientAudioUrl;if(!L.length){$("#bAmb").title="Sin archivo de música ambiental configurado";return}
+ if(!amb){amb=new Audio(L[0]);amb.volume=CONFIG.audio.initialAmbientVolume;
+  const nx=()=>{ai=(ai+1)%L.length;amb.src=L[ai];amb.play().catch(()=>{})};
+  amb.onended=()=>{fails=0;nx()};amb.onerror=()=>{if(++fails<L.length*2)nx()}}
+ ambOn=on;on?amb&&amb.play().catch(()=>{}):amb&&amb.pause();$("#bAmb").style.opacity=on?1:.5}
+const duck=d=>{if(amb)amb.volume=d?CONFIG.audio.initialAmbientVolume*.4:CONFIG.audio.initialAmbientVolume};
+
+/* ===== NARRACIÓN ===== */
+const syn=window.speechSynthesis;const N={off:false,fast:false,tok:0,voice:null};
+function pickVoice(){if(!syn)return;const v=syn.getVoices().filter(x=>/^es/i.test(x.lang));N.voice=v.find(x=>/es[-_](419|MX|AR|CO|US|CL|PE)/i.test(x.lang))||v[0]||null}
+if(syn){pickVoice();syn.onvoiceschanged=pickVoice}
+function speak(t){return new Promise(res=>{
+ if(N.fast)return res();
+ if(!syn||N.off||!CONFIG.narration.enabled||!N.armed)return setTimeout(res,Math.min(3500,500+t.length*40));
+ const u=new SpeechSynthesisUtterance(t.replace(/[\u2764\uFE0F]/g," ").replace(/\.\.\./g,", ").replace(/[«»]/g,""));
+ u.lang=N.voice?N.voice.lang:"es-419";if(N.voice)u.voice=N.voice;u.rate=CONFIG.narration.rate;u.volume=CONFIG.narration.volume;
+ let d=false;const fin=()=>{if(d)return;d=true;clearTimeout(to);duck(false);res()};
+ const to=setTimeout(fin,t.length*120+5000);u.onend=u.onerror=fin;duck(true);syn.speak(u)})}
+let cur=[];
+async function say(lines,box,gap=500){const my=++N.tok;cur=lines.slice();
+ for(const l of lines){if(my!==N.tok)return false;if(box)addLn(box,l);await speak(l);if(!N.fast)await sleep(RM?150:gap)}
+ return my===N.tok}
+async function spell(ls,box){const my=N.tok;for(const c of ls){if(my!==N.tok)return;await speak(c);const s=document.createElement("span");s.className="gl";s.textContent=c;box.appendChild(s);fx(740,.25);await sleep(500)}}
+
+/* ===== PROGRESO ===== */
+function dots(){const d=$("#dots");d.textContent="";["I","II","III","IV"].forEach((r,i)=>{const b=document.createElement("button");b.className="dt "+(S.solved.includes(i)?"ok":(S.stage==="p"+i?"cur":""));b.textContent=r;b.setAttribute("aria-label","Prueba "+r+(S.solved.includes(i)?", resuelta":""));b.disabled=!(S.solved.includes(i)||i===S.solved.length);b.onclick=()=>go("p"+i);d.appendChild(b)})}
+
+/* ===== NAVEGACIÓN ===== */
+const ENTER={};
+function go(stage){N.tok++;N.fast=false;N.off=false;if(syn)syn.cancel();S.stage=stage;save();
+ const sec=/^p\d$/.test(stage)?"pz":stage;
+ $$(".sc").forEach(s=>s.classList.toggle("on",s.id===sec));
+ $("#bar").hidden=["intro","admin"].includes(stage);dots();scrollTo(0,0);
+ if(ENTER[sec])ENTER[sec](stage)}
+
+ENTER.intro=async()=>{N.off=true;const b=$("#inTxt");b.textContent="";await sleep(RM?200:6500);
+ await say(["Hay historias que comienzan con una pregunta.","Otras, con un descubrimiento.","Pero algunas comienzan cuando alguien decide resolver un misterio."],b,900);
+ const h=document.createElement("p");h.className="ln";h.innerHTML='<span class="ci" style="font-size:12px;letter-spacing:.2em;color:var(--g)">PARA EL INVESTIGADOR ASIGNADO:</span><br><span class="big"></span>';b.appendChild(h);
+ for(const c of CONFIG.investigatorName.toUpperCase()){h.querySelector(".big").textContent+=c;fx(880,.15,"sine",.03);await sleep(RM?20:350)}
+ await sleep(600);addLn(b,"Tu misión comienza aquí.");$("#inGo").hidden=false};
+$("#inGo").onclick=()=>{N.armed=true;fx(220,.4);if(CONFIG.ambientAudioUrl.length)setAmb(true);go("instr")};
+["pointerdown","keydown"].forEach(e=>addEventListener(e,()=>{if(S.stage==="intro"&&!ambOn&&CONFIG.ambientAudioUrl.length)setAmb(true)},{once:true}));
+ENTER.instr=async()=>{const b=$("#isTxt");b.textContent="";$("#isGo").hidden=true;
+ await say(["Cuatro pruebas esconden cuatro fragmentos.","Resuélvelas en orden. Cada una te entregará una pieza de la historia que debes descubrir.","Cuando reúnas todas las piezas, tendrás que reconstruirla."],b);$("#isGo").hidden=false};
+$("#isGo").onclick=()=>go("p"+Math.min(S.solved.length,3));
+
+/* ===== PRUEBAS ===== */
+let ci=0;const norm=s=>s.trim().toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"");
+ENTER.pz=async stage=>{const i=ci=+stage[1],p=P[i];document.body.dataset.th=i;
+ $("#pzT").textContent=p.t;$("#pzN").textContent=p.n;$("#pzShow").textContent=p.show||"";$("#pzNote").textContent=p.note||"";
+ $("#pzQ").textContent=p.q;$("#pzIn").value="";$("#pzMsg").textContent="";$("#pzRes").textContent="";$("#pzHintT").textContent="";$("#pzNext").hidden=true;
+ $("#pzHint").hidden=!p.hint;$("#pzAns").hidden=false;
+ const c=$("#pzCards");c.textContent="";(p.cards||[]).forEach(x=>{const d=document.createElement("div");d.className="cd";d.textContent=x;c.appendChild(d)});
+ const box=$("#pzTxt");box.textContent="";
+ if(S.solved.includes(i)){p.lines.forEach(l=>addLn(box,l));win(i,true);return}
+ await say(p.lines,box)};
+function submit(){const p=P[ci];if(norm($("#pzIn").value)===p.a){SND.ok();if(!S.solved.includes(ci))S.solved.push(ci);if(!S.frags.includes(p.w))S.frags.push(p.w);save();dots();win(ci,false)}else{SND.bad();$("#pzMsg").textContent=ERR[Math.floor(Math.random()*ERR.length)]}}
+$("#pzGo").onclick=submit;$("#pzIn").onkeydown=e=>{if(e.key==="Enter")submit()};
+$("#pzHint").onclick=()=>{$("#pzHintT").textContent=P[ci].hint};
+async function win(i,instant){const p=P[i],r=$("#pzRes");r.textContent="";$("#pzAns").hidden=true;$("#pzMsg").textContent="";const my=++N.tok;
+ const row=document.createElement("div");r.appendChild(row);
+ if(instant){[...p.w].forEach(c=>{const s=document.createElement("span");s.className="gl";s.textContent=c;row.appendChild(s)})}
+ else{document.body.classList.add("dim");await sleep(500);document.body.classList.remove("dim");await spell([...p.w],row);if(my!==N.tok)return}
+ const w=document.createElement("div");w.className="wd";w.textContent=p.w;const f=document.createElement("div");f.className="fr";f.textContent="FRAGMENTO 0"+(i+1)+" RECUPERADO.";r.append(w,f);
+ if(!instant){await say([p.ok],r)}else addLn(r,p.ok);
+ const n=$("#pzNext");n.textContent=i<3?"CONTINUAR":"RECONSTRUIR EL TÍTULO";n.hidden=false}
+$("#pzNext").onclick=()=>go(ci<3?"p"+(ci+1):"build");
+
+/* ===== RECONSTRUCCIÓN ===== */
+const ORDER=["DEL","BRUJO","EL","APRENDIZ"];let pk=[];
+ENTER.build=()=>{if(S.solved.length<4)return go("p"+S.solved.length);pk=[];$("#bMsg").textContent="";rb()};
+function rb(){const sl=$("#bSl"),cs=$("#bCd");sl.textContent=cs.textContent="";
+ for(let k=0;k<4;k++){const d=document.createElement("div");d.className="sl"+(pk[k]?" f":"");d.textContent=pk[k]||String(k+1);sl.appendChild(d)}
+ ORDER.forEach(w=>{const b=document.createElement("button");b.className="cd";b.textContent=w;b.disabled=pk.includes(w);b.onclick=()=>{SND.tap();pk.push(w);rb()};cs.appendChild(b)})}
+$("#bUn").onclick=()=>{pk.pop();rb()};
+$("#bOk").onclick=()=>{if(pk.length<4){$("#bMsg").textContent="Todavía hay posiciones vacías.";return}
+ if(pk.join(" ")==="EL APRENDIZ DEL BRUJO"){S.title=true;save();go("reveal")}else{SND.bad();$("#bMsg").textContent="Las piezas aún no cuentan una historia. Quizá debas observar cómo se conectan."}};
+ENTER.reveal=async()=>{if(!S.title)return go("build");document.body.dataset.th="";const t=$("#rvT"),b=$("#rvTxt"),b2=$("#rvTxt2");t.textContent=b.textContent=b2.textContent="";$("#rvGo").hidden=true;
+ await say(["Expediente resuelto."],b,1200);if(N.tok<0)return;addLn(b,"La historia que estabas buscando es...");await speak("La historia que estabas buscando es...");await sleep(1200);
+ SND.rev();t.textContent="EL APRENDIZ DEL BRUJO";t.style.animation="pop 2s both";await speak("EL APRENDIZ DEL BRUJO");await sleep(900);
+ const f=document.createElement("div");f.className="fr";f.textContent="EXPEDIENTE COMPLETADO.";b2.appendChild(f);
+ await say(["Pero todavía queda un último archivo por descubrir."],b2);$("#rvGo").hidden=false};
+$("#rvGo").onclick=()=>{S.final=true;SND.open();go("final")};
+
+/* ===== ESCENA FINAL: VIDEO ===== */
+let vbHTML;
+ENTER.final=async()=>{if(!S.final)return go("reveal");const b=$("#fnTxt");b.textContent="";$("#vbNext").hidden=true;$("#vbNote").textContent="";
+ if(vbHTML)$("#vb").replaceChildren(...vbHTML);else vbHTML=[...$("#vb").childNodes];$("#vbGo").onclick=playFinal;
+ await say(["Has conseguido reconstruir la historia.","Pero todavía hay algo que no está escrito en este expediente.","Algunas historias no necesitan explicarse con palabras. A veces basta con escuchar unos segundos para recordar algo especial.","El último archivo ya está aquí. Solo tienes que reproducirlo.","Pista: presta atención a la melodía."],b,700)};
+function playFinal(){const vb=$("#vb"),nx=$("#vbNext"),note=$("#vbNote");N.tok++;if(syn)syn.cancel();if(amb)amb.pause();
+ const U=CONFIG.finalVideoUrl,M=CONFIG.finalMusicUrl;
+ if(U){const yt=U.match(/(?:youtu\.be\/|v=|embed\/)([\w-]{11})/);
+  if(yt){const f=document.createElement("iframe");f.src="https://www.youtube.com/embed/"+yt[1]+"?autoplay=1&rel=0";f.allow="autoplay; fullscreen";f.title="Último archivo";vb.replaceChildren(f);setTimeout(()=>nx.hidden=false,30000);note.textContent="Cuando termine, toca CONTINUAR."}
+  else{const v=document.createElement("video");v.src=U;v.controls=true;v.playsInline=true;v.onended=afterMedia;v.onerror=()=>{note.textContent="No se pudo cargar el video.";nx.hidden=false};vb.replaceChildren(v);v.play().catch(()=>{})}}
+ else if(M){const a=document.createElement("audio");a.src=M;a.controls=true;a.onended=afterMedia;a.onerror=()=>{note.textContent="No se pudo cargar la música.";nx.hidden=false};vb.replaceChildren(a);a.play().catch(()=>{})}
+ else{note.textContent="Falta configurar FINAL_VIDEO_URL (archivo multimedia pendiente). No se está simulando ninguna reproducción.";nx.hidden=false}}
+$("#vbNext").onclick=()=>afterMedia();
+function afterMedia(){if(ambOn&&amb)amb.play().catch(()=>{});go("letter")}
+
+/* ===== SOBRE Y CARTA ===== */
+ENTER.letter=async()=>{if(!S.final)return go("reveal");const intro=$("#ltIntro"),env=$("#env"),paper=$("#paper");
+ intro.textContent="";paper.textContent="";paper.hidden=true;$("#ltEnv").hidden=true;$("#ltEnd").hidden=true;$("#ltAll").hidden=true;env.classList.remove("o");
+ if(S.done){N.fast=true;showEnv();await openEnv(true);return}
+ intro.style.animation="none";const ln=addLn(intro,"Mi amorcito, aquí estamos...");await speak("Mi amorcito, aquí estamos...");await sleep(1800);showEnv()};
+function showEnv(){$("#ltEnv").hidden=false}
+let opened=false;
+async function openEnv(instant){if(opened&&!instant)return;opened=true;const env=$("#env"),paper=$("#paper");env.classList.add("o");SND.open();$("#ltIntro").textContent="";
+ paper.hidden=false;$("#ltAll").hidden=false;await sleep(instant?0:900);const my=++N.tok;
+ for(const l of LETTER){if(my!==N.tok)return;const p=document.createElement("p");p.textContent=l;paper.appendChild(p);if(!N.fast){p.scrollIntoView({block:"center",behavior:"smooth"});await speak(l);await sleep(RM?150:500)}}
+ if(my!==N.tok)return;$("#ltAll").hidden=true;N.fast=false;
+ $("#ltEnd").hidden=false;$("#ltSig").textContent="Con muchísimo amor, tu Reyna. ❤️";
+ const f=$("#ltFin");f.textContent="";if(!instant){await sleep(1800)}addLn(f,"Fin del expediente.");if(!instant)await sleep(1800);addLn(f,CONFIG.finalMessage.replace(/^Pero/,"Pero"));S.done=true;save();opened=false}
+$("#env").onclick=()=>openEnv(false);$("#env").onkeydown=e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();openEnv(false)}};
+$("#ltAll").onclick=()=>{N.fast=true;if(syn)syn.cancel()};
+
+/* ===== CONTROLES ===== */
+$("#bRep").onclick=async()=>{if(!cur.length)return;N.off=false;N.fast=false;const l=cur.slice(),my=++N.tok;if(syn)syn.cancel();for(const x of l){if(my!==N.tok)return;await speak(x);await sleep(400)}};
+let paused=false;$("#bPau").onclick=()=>{if(!syn)return;paused=!paused;paused?syn.pause():syn.resume()};
+$("#bStp").onclick=()=>{N.off=true;if(syn){syn.resume();syn.cancel()}};
+$("#bAmb").onclick=()=>setAmb(!ambOn);
+$("#bFx").onclick=()=>{CONFIG.audio.effectsEnabled=!CONFIG.audio.effectsEnabled;$("#bFx").style.opacity=CONFIG.audio.effectsEnabled?1:.4};
+let rs=0;$("#bRst").onclick=()=>{if(!rs){rs=1;$("#bRst").textContent="¿Seguro?";setTimeout(()=>{rs=0;$("#bRst").textContent="⟲"},4000);return}
+ try{localStorage.removeItem(KEY)}catch(e){}location.href=location.pathname};
+
+/* ===== PARTÍCULAS ===== */
+(function(){if(RM)return;const c=$("#cv"),x=c.getContext("2d");let W,H,ps=[];const rs=()=>{W=c.width=innerWidth;H=c.height=innerHeight};rs();addEventListener("resize",rs);
+ for(let i=0;i<40;i++)ps.push({x:Math.random(),y:Math.random(),r:Math.random()*1.6+.4,s:Math.random()*.0004+.0001});
+ (function f(){x.clearRect(0,0,W,H);ps.forEach(p=>{p.y-=p.s;if(p.y<0)p.y=1;x.fillStyle="rgba(244,213,141,"+(.3+.4*Math.sin(p.y*20))+")";x.beginPath();x.arc(p.x*W,p.y*H,p.r,0,7);x.fill()});requestAnimationFrame(f)})()})();
+
+/* ===== PANEL DE ADMINISTRACIÓN (?admin=1) ===== */
+function badUrl(u){let o;try{o=new URL(u)}catch(e){return "La URL no es válida."}
+ if(!/^https?:$/.test(o.protocol))return "Debe empezar por http:// o https://.";
+ const h=o.hostname;if(h==="localhost"||!h.includes(".")||/^(127\.|10\.|192\.168\.|169\.254\.|172\.(1[6-9]|2\d|3[01])\.)/.test(h)||/\.(local|internal|lan)$/.test(h))return "Debe ser una URL pública, no local ni interna.";return ""}
+let qrC=null;
+function initAdmin(){$("#bar").hidden=true;$$(".sc").forEach(s=>s.classList.toggle("on",s.id==="admin"));
+ const miss=[["AMBIENT_AUDIO_URL",CONFIG.ambientAudioUrl.length],["FINAL_VIDEO_URL (o FINAL_MUSIC_URL)",CONFIG.finalVideoUrl||CONFIG.finalMusicUrl]].filter(a=>!a[1]).map(a=>a[0]);
+ $("#aPend").textContent=miss.length?"Pendiente de configurar: "+miss.join(", ")+".":"Multimedia configurada (sin verificar que los enlaces carguen).";
+ $("#aU").value=CONFIG.publicUrl;
+ $("#aGen").onclick=()=>{const u=$("#aU").value.trim(),e=badUrl(u);if(e){$("#aMsg").textContent=e;return}
+  if(typeof QRCode==="undefined"){$("#aMsg").textContent="No se cargó la biblioteca QR (se necesita internet).";return}
+  const sz=+$("#aS").value,m=Math.max(40,+$("#aM").value||80),t=$("#aTmp");t.textContent="";
+  new QRCode(t,{text:u,width:sz,height:sz,colorDark:"#000000",colorLight:"#ffffff",correctLevel:QRCode.CorrectLevel.H});
+  setTimeout(()=>{const src=t.querySelector("canvas");if(!src){$("#aMsg").textContent="No se pudo generar el QR.";return}
+   const o=document.createElement("canvas");o.width=o.height=sz+2*m;const g=o.getContext("2d");g.fillStyle="#fff";g.fillRect(0,0,o.width,o.height);g.drawImage(src,m,m);qrC=o;
+   const im=new Image();im.src=o.toDataURL("image/png");im.alt="Código QR de la experiencia";im.style.cssText="width:100%;max-width:320px;background:#fff";$("#aOut").replaceChildren(im);
+   $("#aMsg").textContent="QR generado ("+o.width+" px). Pruébalo con otro teléfono antes de imprimirlo: no se ha verificado que la URL esté activa."},60)};
+ $("#aDl").onclick=()=>{if(!qrC){$("#aMsg").textContent="Primero genera el QR.";return}qrC.toBlob(b=>{const a=document.createElement("a");a.href=URL.createObjectURL(b);a.download="qr-expediente.png";a.click()})};
+ $("#aCp").onclick=()=>{const u=$("#aU").value.trim();navigator.clipboard&&navigator.clipboard.writeText(u).then(()=>$("#aMsg").textContent="Enlace copiado.").catch(()=>$("#aMsg").textContent="No se pudo copiar.")};
+ $("#aCfg").onclick=()=>{const q=s=>JSON.stringify($(s).value.trim());$("#aCo").value="ambientAudioUrl: "+q("#aA")+",\nfinalMusicUrl: "+q("#aF")+",\nfinalVideoUrl: "+q("#aV")+",\nfinalMessage: "+q("#aT")+",\npublicUrl: "+q("#aU")};
+ $("#aT1").onclick=()=>{try{localStorage.removeItem(KEY)}catch(e){}location.href=location.pathname};
+ $("#aT2").onclick=()=>{S={stage:"final",solved:[0,1,2,3],frags:["EL","APRENDIZ","BRUJO","DEL"],title:true,final:true,done:false};save();location.href=location.pathname}}
+
+/* ===== ARRANQUE ===== */
+if(new URLSearchParams(location.search).get("admin")==="1")initAdmin();
+else{const st=S.stage;if(st==="intro"||!(/^p\d$|^(instr|build|reveal|final|letter)$/.test(st)))go("intro");
+ else{$("#bar").hidden=false;$("#bFx").style.opacity=1;$$(".sc").forEach(s=>s.classList.remove("on"));
+  N.armed=false;const resume=document.createElement("button");resume.className="b";resume.textContent="CONTINUAR EL EXPEDIENTE";const d=document.createElement("section");d.className="sc on";d.id="rsm";d.appendChild(resume);document.body.insertBefore(d,$("#intro"));
+  resume.onclick=()=>{N.armed=true;d.remove();if(CONFIG.ambientAudioUrl.length)setAmb(true);go(st)}}}
+</script></body></html>
